@@ -8,3 +8,6 @@ node_modules
 
 # VIM data
 *.swp
+
+# Build directory
+app
