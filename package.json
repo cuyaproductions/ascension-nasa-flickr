@@ -1,0 +1,56 @@
+{
+  "name": "ascension-nasa-flickr",
+  "version": "1.0.0",
+  "description": "Flickr-powered application for NASA Flickr accounts",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "live-server": "^1.0.0",
+    "node-sass": "^3.8.0",
+    "nodemon": "^1.9.2",
+    "postcss": "^5.0.21",
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+    "start": "npm run watch & npm run server",
+
+    "server": "live-server --ignore=src",
+
+    "clear": "rm -fr app",
+    "postclear": "mkdir app",
+
+    "prebuild": "npm run clear",
+    "build": "npm run css && npm run js && npm run img",
+
+    "prewatch": "npm run clear",
+    "watch": "npm run watch:css & npm run watch:js & npm run watch:img",
+    "watch:css": "nodemon -e scss -w src/styles -x npm run css",
+    "watch:js": "webpack --watch",
+    "watch:img": "nodemon -w src/imgs -x npm run img",
+
+    "precss": "mkdir -p app/styles",
+    "css": "node-sass _styles/main.scss | postcss --use autoprefixer > app/styles/main.css",
+
+    "prejs": "mkdir -p app/scripts",
+    "js": "webpack",
+
+    "preimg": "mkdir -p app/imgs",
+    "img": "cp -r _imgs/* app/imgs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuyaproductions/ascension-nasa-flickr.git"
+  },
+  "author": "Diego Hernandez <diego.a.hernandez123@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cuyaproductions/ascension-nasa-flickr/issues"
+  },
+  "homepage": "https://github.com/cuyaproductions/ascension-nasa-flickr#readme"
+}
