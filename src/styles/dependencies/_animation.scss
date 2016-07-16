@@ -1,0 +1,9 @@
+@mixin animate($duration: $ANIMATION-DURATION) {
+  $name: unique-id();
+  animation-name: $name;
+  animation-duration: $duration;
+
+  @keyframes $name {
+    @content;
+  }
+}

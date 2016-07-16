@@ -1,0 +1,24 @@
+$FONT: (
+  family: '"Gotham", helvetica, arial, sans-serif',
+  size: 14px,
+  weight: 400,
+  height: 1.5
+);
+
+
+$ANIMATION-DURATION: 400ms;
+
+$COLORS: (
+	red: #EB140A,
+	black: #000,
+	white: #FFF,
+	slate: #333F48,
+	lightblue: #46C8E1,
+	gray: #F1F2F2	
+);
+
+
+$QUERY-BREAKPOINTS: (
+  tablet: 769px,
+  desktop: 992px
+);

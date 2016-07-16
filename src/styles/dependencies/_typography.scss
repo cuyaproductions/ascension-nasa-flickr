@@ -1,0 +1,28 @@
+@mixin type-size($size) {
+  // font-size: #{map-get($FONT, size)} * $size;
+  font-size: #{$size}em;
+}
+
+@mixin font-face($name, $file-name, $directory: "fonts", $weight: null, $style: null) {
+  @font-face {
+    font-family: $name;
+    font-weight: $weight;
+    font-style: $style;
+    src: url("#{$directory}/#{$file-name}.eot"); /* IE9 Compat Modes */
+    src: url('#{$directory}/#{$file-name}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('#{$directory}/#{$file-name}.woff') format('woff'), /* Pretty Modern Browsers */
+         url('#{$directory}/#{$file-name}.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+}
+
+@include font-face(
+	$name: "HP Simplified",
+	$file-name: "latin-light",
+	$directory: "../fonts",
+	$weight: 300
+);
+
+@mixin lenovo-type {
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+}

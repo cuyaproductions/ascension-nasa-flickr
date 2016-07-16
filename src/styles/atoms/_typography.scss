@@ -1,0 +1,30 @@
+html {
+  font-size: map-get($FONT, size);
+}
+
+body {
+  font-family: unquote(map-get($FONT, family));
+  font-size: 1rem;
+  font-weight: map-get($FONT, weight);
+  line-height: map-get($FONT, height);
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-weight: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include lenovo-type;
+}

@@ -1,0 +1,7 @@
+@mixin media-query($name) {
+  $size: map-get($QUERY-BREAKPOINTS, $name);
+
+  @media only screen and (min-width: #{$size}) {
+    @content;
+  }
+}
