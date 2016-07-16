@@ -4,6 +4,7 @@ module.exports = {
 		path: "./app/scripts",
 		filename: "app.bundle.js"
 	},
+devtool: "source-map",
 	module: {
 		loaders: [{
 			test: /\.js$/,

@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Flickr-powered application for NASA Flickr accounts",
   "dependencies": {
+    "backbone": "^1.3.3",
     "handlebars": "^4.0.5",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -19,27 +21,20 @@
   },
   "scripts": {
     "start": "npm run watch & npm run server",
-
-    "server": "live-server --ignore=src",
-
+    "server": "live-server --watch=app",
     "clear": "rm -fr app",
     "postclear": "mkdir app",
-
     "prebuild": "npm run clear",
     "build": "npm run css && npm run js && npm run img",
-
     "prewatch": "npm run clear",
     "watch": "npm run watch:css & npm run watch:js & npm run watch:img",
     "watch:css": "nodemon -e scss -w src/styles -x npm run css",
     "watch:js": "webpack --watch",
     "watch:img": "nodemon -w src/imgs -x npm run img",
-
     "precss": "mkdir -p app/styles",
     "css": "node-sass _styles/main.scss | postcss --use autoprefixer > app/styles/main.css",
-
     "prejs": "mkdir -p app/scripts",
     "js": "webpack",
-
     "preimg": "mkdir -p app/imgs",
     "img": "cp -r _imgs/* app/imgs/"
   },

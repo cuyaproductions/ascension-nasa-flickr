@@ -1,1 +1,3 @@
-console.log(window.location);
+import Photos from './photos';
+
+const photos = new Photos();
