@@ -36,7 +36,12 @@ class Photos extends Collection {
 
 	successHandler(me, resp) {
 		me.pop();
-		me.currentPage++;
+
+		me.totalPages = resp.photos.pages;
+
+		if (me.currentPage++ >= me.totalPages) {
+			me.noMore = true;
+		}	
 		_(resp.photos.photo).each((photo) => {
 			me.add(photo);
 		});
@@ -44,6 +49,7 @@ class Photos extends Collection {
 	
 	clean() {
 		this.currentPage = 1;
+		this.noMore = false;
 		this.reset([]);
 	}
 

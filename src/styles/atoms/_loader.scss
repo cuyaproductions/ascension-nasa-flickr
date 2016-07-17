@@ -1,15 +1,29 @@
 .loader {
+	$me: &;
 	height: 100vh;
 	display: flex;
+
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	color: color(blue);
 
 	&--collapsed {
 		display: block;
 		height: auto;
 		padding: 5.5rem 0 18.5rem;
 		text-align: center;
+	}
+
+	&--nomore {
+		#{$me}__image {
+			display: none;
+		}	
+
+		#{$me}__nomore {
+			display: block;
+		}
 	}
 
 	&__image {
@@ -45,7 +59,10 @@
 
 	&__nojs {
 		margin-top: 1rem;
-		color: color(blue);
+	}
+
+	&__nomore {
+		display: none;
 	}
 
 }
