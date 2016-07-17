@@ -24,10 +24,6 @@ class Photo extends Model {
 			isfamily: 0
 		}
 	}
-
-	image() {
-		return `https://farm${this.get("farm")}.staticflickr.com/${this.get("server")}/${this.get("id")}_{this.get("secret")}.jpg` 
-	}
 }
 
 export default Photo;

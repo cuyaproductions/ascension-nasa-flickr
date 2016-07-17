@@ -1,3 +1,7 @@
-import Photos from './photos';
+import $ from 'jquery';
+import Gallery from './views/gallery';
 
-const photos = new Photos();
+
+$(() => {
+	const ascension = new Gallery();
+})
