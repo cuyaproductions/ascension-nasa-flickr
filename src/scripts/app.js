@@ -1,7 +1,8 @@
 import $ from 'jquery';
-import Gallery from './views/gallery';
+import AppView from './views/appView.js';
 
 
 $(() => {
-	const ascension = new Gallery();
+	const ascension = new AppView();
+	ascension.render();
 })

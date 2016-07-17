@@ -1,37 +1,40 @@
 import $ from 'jquery';
 import {View} from 'backbone';
-import Photos from '../collections/photos';
 import Thumbnail from './thumbnail';
 
 class Gallery extends View {
-	constructor() {
-		super({
-			events: {
-				'click #more': 'loadMore'
-			},
-			className: 'gallery',
-			tagName: 'ul'
-		});
-
-		this.model = new Photos();
+	constructor(model) {
+		super();
+		this.model = model;
 		this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.model, 'reset', this.reset);
 	}
 
-
+	className() {
+		return 'gallery';
+	}
+	tagName() {
+		return 'ul';
+	}
 
 	render() {
 		this.$el.html('');
 		this.model.each(this.addPhoto, this);
-		$('body')
-				.prepend(this.el)
-			.find('.loader')
-				.addClass('loader--collapsed');
-		this.infiniteScroll();
+		if(!this.model.isReset) {
+			this.infiniteScroll();
+		} else {
+			this.model.isReset = false;
+		}
+		return this;
 	}
 
 	addPhoto(model) {
 		const thumbnail = new Thumbnail(model);
 		this.$el.append(thumbnail.el);		
+	}
+
+	reset() {
+		document.body.scrollTop = 0;
 	}
 
 
@@ -47,6 +50,7 @@ class Gallery extends View {
 		}
 
 		window.addEventListener('scroll', loadMore);
+
 	}
 }
 

@@ -1,8 +1,3 @@
-@mixin type-size($size) {
-  // font-size: #{map-get($FONT, size)} * $size;
-  font-size: #{$size}em;
-}
-
 @mixin font-face($name, $file-name, $directory: "fonts", $weight: null, $style: null) {
   @font-face {
     font-family: $name;
@@ -15,14 +10,3 @@
   }
 }
 
-@include font-face(
-	$name: "HP Simplified",
-	$file-name: "latin-light",
-	$directory: "../fonts",
-	$weight: 300
-);
-
-@mixin lenovo-type {
-	text-transform: uppercase;
-	letter-spacing: 0.2rem;
-}

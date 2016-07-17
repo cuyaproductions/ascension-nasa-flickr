@@ -11,9 +11,17 @@ class Photos extends Collection {
 		this.currentPage = 1;
 		this.loadMore();
 	}
+	
+	baseUrl() {
+		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&format=json&nojsoncallback=1`;
+	}
+
+	searchUrl(query) {
+		return `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&text=${query}&format=json&nojsoncallback=1`;
+	}
 
 	url() {
-		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&format=json&nojsoncallback=1`;
+		return this.baseUrl();
 	}
 
 	loadMore() {
@@ -32,6 +40,18 @@ class Photos extends Collection {
 		_(resp.photos.photo).each((photo) => {
 			me.add(photo);
 		});
+	}
+	
+	clean() {
+		this.currentPage = 1;
+		this.reset([]);
+	}
+
+	search(query) {
+		this.clean();
+		this.url = () => {return this.searchUrl(query)};
+		this.isReset = true;
+		this.loadMore();
 	}
 }
 

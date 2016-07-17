@@ -14,7 +14,8 @@ class Templates extends Model {
 
 	defaults() {
 		return {
-			thumbnail: ''
+			thumbnail: '',
+			header: ''
 		}
 	}
 }

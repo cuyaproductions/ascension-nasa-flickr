@@ -1,4 +1,5 @@
 import {Model} from 'backbone';
+import CONFIG from '../config';
 
 class Photo extends Model {
 	constructor (data) {
