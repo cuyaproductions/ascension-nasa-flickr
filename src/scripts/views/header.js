@@ -30,7 +30,7 @@ class Header extends View {
 
 	search(event) {
 		event.preventDefault();
-		const query = $(event.target).find('#search_input').val();
+		const query = $(event.target).find('#search_input').blur().val();
 		this.model.search(query);
 	}
 }
