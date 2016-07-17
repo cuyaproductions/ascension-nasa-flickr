@@ -1,9 +1,9 @@
-@mixin animate($duration: $ANIMATION-DURATION) {
+@mixin animate($duration: map-get($ANIMATION, duration)) {
   $name: unique-id();
   animation-name: $name;
   animation-duration: $duration;
 
-  @keyframes $name {
+  @keyframes #{$name} {
     @content;
   }
 }

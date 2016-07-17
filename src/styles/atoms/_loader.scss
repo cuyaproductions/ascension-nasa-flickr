@@ -1,0 +1,36 @@
+.loader {
+	padding: 4rem 0 20rem;
+
+	&__image {
+		display: block;
+		height: 8rem;
+		margin: auto;
+		width: 8rem;
+
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+
+		@include animate($duration: 2000ms) {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
+
+	&__planet, &__astro {
+		fill: color(blue);
+	}
+	&__orbit {
+		fill: none;
+		stroke: color(blue);
+		stroke-with: 10;
+		stroke-linecap: round;
+	}
+	&__spacer {
+		fill: none;
+	}
+
+}
