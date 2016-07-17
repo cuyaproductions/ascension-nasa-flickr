@@ -14,21 +14,19 @@ class Gallery extends View {
 		});
 
 		this.model = new Photos();
-		this.listenTo(this.model, 'photos:ready', this.render);
-		this.more = true;
-
+		this.listenTo(this.model, 'sync', this.render);
 	}
 
 	render() {
 		this.$el.html('');
 		this.model.each(this.addPhoto, this);
-		$('body').append(this.$el);
+		$('body').append(this.el);
 		this.infiniteScroll();
 	}
 
 	addPhoto(model) {
 		const thumbnail = new Thumbnail(model);
-		this.$el.append(thumbnail.$el);		
+		this.$el.append(thumbnail.el);		
 	}
 
 

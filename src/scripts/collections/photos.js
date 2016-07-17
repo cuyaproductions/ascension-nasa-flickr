@@ -32,7 +32,6 @@ class Photos extends Collection {
 		_(resp.photos.photo).each((photo) => {
 			me.add(photo);
 		});
-		me.trigger('photos:ready', me);
 	}
 }
 
