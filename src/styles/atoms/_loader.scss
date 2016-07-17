@@ -1,5 +1,12 @@
 .loader {
-	padding: 4rem 0 20rem;
+	height: 100vh;
+	display: flex;
+
+	&--collapsed {
+		height: auto;
+		display:block;
+		padding: 5.5rem 0 18.5rem;
+	}
 
 	&__image {
 		display: block;
