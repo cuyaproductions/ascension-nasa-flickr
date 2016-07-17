@@ -15,12 +15,15 @@ class Gallery extends View {
 
 		this.model = new Photos();
 		this.listenTo(this.model, 'photos:ready', this.render);
+		this.more = true;
+
 	}
 
 	render() {
 		this.$el.html('');
 		this.model.each(this.addPhoto, this);
-		$('body').html(this.$el);
+		$('body').append(this.$el);
+		this.infiniteScroll();
 	}
 
 	addPhoto(model) {
@@ -28,8 +31,19 @@ class Gallery extends View {
 		this.$el.append(thumbnail.$el);		
 	}
 
-	loadMore() {
-		this.model.loadMore();
+
+	infiniteScroll() {
+		const me = this;
+		function loadMore() {
+			const height = window.innerHeight,
+						bottom = document.body.getClientRects()[0].bottom;
+			if (height >= bottom) {
+				me.model.loadMore();
+				window.removeEventListener('scroll', loadMore);
+			}
+		}
+
+		window.addEventListener('scroll', loadMore);
 	}
 }
 
