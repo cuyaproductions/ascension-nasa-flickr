@@ -18,13 +18,13 @@ class Header extends View {
 
 	events() {
 		return {
-			"submit #form": "search"
+			'submit #form': 'search'
 		}
 	}
 
 	render() {
 		const template = _.template(templates.get(this.template));
-		this.$('.header__container').append(template());
+		this.$('.header__search').html(template());
 		return this;
 	}
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1">
 	<title>Ascension - NASA Flickr Feed</title>
 	<link href="https://fonts.googleapis.com/css?family=Oxygen:300" rel="stylesheet">
 	<link rel="stylesheet" href="app/styles/main.css">
@@ -10,7 +10,10 @@
 <body>
 	<header id="header" class="header">
 		<div class="header__container">
-			<h1 class="header__logo">Ascension App</h1>
+			<h1 class="header__logo">
+				<span class="header__name">Ascension App</span>
+			</h1>
+			<div class="header__search"></div>
 		</div>
 	</header>
 	
@@ -26,6 +29,7 @@
 				<circle class="loader__spacer" cx="61.9" cy="61.9" r="61.9"/>
 			</g>
 		</svg>
+		<noscript class="loader__nojs">Please enable Javascript to run this application</noscript>
 	</div>
 	<script src="app/scripts/app.bundle.js"></script>
 </body>

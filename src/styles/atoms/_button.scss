@@ -1,19 +1,22 @@
 @mixin button {
 	display: inline-block;
 	padding: 0.5em 0.75em;
+	margin: 0;
 	
 	font-family: inherit;
 	font-size: 0.85rem;
 	font-weight: inherit;
 
   appearance: none;
-	background-color: transparent;
-	border: 1px solid currentcolor;
-	color: inherit;
+	background-color: color(blue);
+	border: none;
+	border-radius: 0;
+	color: #FFF;
 
   cursor: pointer;
 
 	&:hover {
+		background-color: darken(color(blue), 10%);
 		text-decoration: none;
 	}
 }

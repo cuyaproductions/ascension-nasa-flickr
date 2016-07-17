@@ -1,0 +1,11 @@
+@mixin container {
+	box-sizing: border-box;
+	max-width: 50rem;
+	widht: 100%;
+	margin: auto;
+	padding: 1.6rem;
+
+	@include media-query(desktop) {
+		max-width: 80rem; 
+	}
+}

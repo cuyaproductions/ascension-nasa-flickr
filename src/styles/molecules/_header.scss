@@ -1,16 +1,56 @@
 .header {
-	height: 4rem;
 	width: 100%;
 
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	z-index: 1;
 
 	background-color: #000;
 	color: #FFF;
 
+	&__container {
+		@include container;
+
+		display: flex;
+		align-items: center;
+	}
+
 	&__logo {
-		display: none;
+		flex: 0 0 2rem;
+		margin: 0;
+		padding-left: 2.5rem;
+		width: 2rem;
+		height: 2rem;
+
+		background: url('../imgs/logo.svg') no-repeat center left;
+	}
+
+	&__name {
+		position: absolute;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
+
+	&__search {
+		flex: 1 1 auto;
+	}
+
+	@include media-query(tablet) {
+		&__logo {
+			flex: 1 0 auto;
+			width: auto;
+			height: auto;
+		}
+		&__name {
+			position: static;
+			height: auto;
+			width: auto;
+			overflow: auto;
+		}
+		&__search {
+			flex: 0 0 auto;
+		}
 	}
 }

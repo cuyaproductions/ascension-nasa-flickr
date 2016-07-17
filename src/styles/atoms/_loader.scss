@@ -1,17 +1,20 @@
 .loader {
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
 	&--collapsed {
+		display: block;
 		height: auto;
-		display:block;
 		padding: 5.5rem 0 18.5rem;
+		text-align: center;
 	}
 
 	&__image {
-		display: block;
+		display: inline-block;
 		height: 8rem;
-		margin: auto;
 		width: 8rem;
 
 		animation-iteration-count: infinite;
@@ -38,6 +41,11 @@
 	}
 	&__spacer {
 		fill: none;
+	}
+
+	&__nojs {
+		margin-top: 1rem;
+		color: color(blue);
 	}
 
 }

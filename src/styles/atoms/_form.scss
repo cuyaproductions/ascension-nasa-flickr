@@ -1,0 +1,21 @@
+@mixin text-input {
+	min-height: 2rem;
+	
+	font-family: inherit;
+	font-size: inherit;
+	
+	appearance: none;
+	background-color: transparent;
+	border: 1px solid darken(#FFF, 40%);
+	border-radius: 0;
+	color: #FFF;
+}
+
+[type=text],
+[type=search] {
+	@include text-input;
+}
+[type=submit] {
+	@include button;
+	padding: auto;
+}
