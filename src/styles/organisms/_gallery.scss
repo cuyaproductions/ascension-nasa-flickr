@@ -1,0 +1,22 @@
+.gallery {
+	padding: 0 2rem;
+	list-style: none;
+
+	&__item {
+		margin: 2rem 0;
+		height: 20rem;
+	}
+
+	@include media-query(tablet) {
+		display: flex;	
+		flex-wrap: wrap;
+		justify-content: center;
+
+		&__item {
+			flex: 0 1 20rem;
+			margin: 1rem;
+			min-width: 15rem;
+			width: 100%;
+		}
+	}
+}

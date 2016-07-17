@@ -1,0 +1,42 @@
+.thumbnail {
+	$me: &;
+
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	text-align: center;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: inset 0 0 0 1px rgba(#FFF, 0.9);
+
+
+	&__title {
+		box-sizing: border-box;
+		display: block;
+		padding: 0.5em 0.8rem;
+		width: 100%;
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		background-color: rgba(#FFF, 0.9);
+	}
+
+	@include media-query(tablet) {
+		&:hover {
+			#{$me}__title {
+				transform: translateY(0);
+			}
+		}
+
+		&__title {
+			transform: translateY(100%);
+			transition: transform map-get($ANIMATION, duration) ease-in-out;
+		}
+	}
+}

@@ -1,20 +1,17 @@
 $FONT: (
-  family: '"Gotham", helvetica, arial, sans-serif',
+  family: '"Oxygen", helvetica, arial, sans-serif',
   size: 14px,
-  weight: 400,
+  weight: 300,
   height: 1.5
 );
 
 
-$ANIMATION-DURATION: 400ms;
+$ANIMATION: (
+	duration: 300ms
+);
 
 $COLORS: (
-	red: #EB140A,
-	black: #000,
-	white: #FFF,
-	slate: #333F48,
-	lightblue: #46C8E1,
-	gray: #F1F2F2	
+	charcoal: #17191A
 );
 
 

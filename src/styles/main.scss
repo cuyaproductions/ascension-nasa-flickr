@@ -8,6 +8,6 @@
 @import "atoms/typography";
 @import "atoms/button";
 
-body {
-	background: red;
-}
+@import "molecules/thumbnail";
+
+@import "organisms/gallery";

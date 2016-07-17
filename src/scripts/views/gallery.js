@@ -6,13 +6,15 @@ import Thumbnail from './thumbnail';
 class Gallery extends View {
 	constructor() {
 		super({
+			events: {
+				'click #more': 'loadMore'
+			},
 			className: 'gallery',
 			tagName: 'ul'
 		});
 
 		this.model = new Photos();
-		this.listenTo(this.model, 'sync', this.render);
-		this.render();
+		this.listenTo(this.model, 'photos:ready', this.render);
 	}
 
 	render() {
@@ -24,6 +26,10 @@ class Gallery extends View {
 	addPhoto(model) {
 		const thumbnail = new Thumbnail(model);
 		this.$el.append(thumbnail.$el);		
+	}
+
+	loadMore() {
+		this.model.loadMore();
 	}
 }
 
