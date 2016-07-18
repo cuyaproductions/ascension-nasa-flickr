@@ -21,7 +21,7 @@ class AppRouter extends Router {
 		return {
 			'': 'gallery',
 			'photo/:id': 'photo',
-			'search/:query': 'search'
+			'search?q=:query': 'search'
 		}
 	}
 
