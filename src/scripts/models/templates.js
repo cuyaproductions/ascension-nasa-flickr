@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'underscore';
-import {Model, Events} from 'backbone';
+import {Model} from 'backbone';
 
 class Templates extends Model {
 	constructor() {
@@ -15,7 +15,8 @@ class Templates extends Model {
 	defaults() {
 		return {
 			thumbnail: '',
-			header: ''
+			header: '',
+			photo: ''
 		}
 	}
 }

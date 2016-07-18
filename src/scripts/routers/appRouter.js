@@ -36,6 +36,10 @@ class AppRouter extends Router {
 	photo(id) {
 		const model = new Photo({id: id});
 		const view =  new PhotoView({model: model});
+		if (this.App.Views.Gallery) {
+			this.App.Views.Gallery.scrollActive = false;
+			this.App.Views.Gallery.isActive = false;
+		}
 		$('#app').html('').append(view.el);
 	}
 	

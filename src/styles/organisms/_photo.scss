@@ -1,0 +1,8 @@
+.photo {
+	&__container {
+		@include container;
+		background-color: #FFF;
+		margin-top: 7rem;
+		margin-bottom: 2rem;
+	}
+}

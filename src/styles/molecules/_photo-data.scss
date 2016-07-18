@@ -1,0 +1,29 @@
+.photo-data {
+	list-style: none;
+	font-size: 0.9em;
+	margin: 0;
+
+	&:after {
+		content: '';
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+
+	&__type {
+		margin-right: 0.5em;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: color(blue);
+	}
+
+	@include media-query(tablet) {
+		padding-left: 0;
+
+		&__item {
+			float: left;
+			margin-right: 4rem;
+		}
+	}
+}

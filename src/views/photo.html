@@ -1,3 +1,17 @@
 <div class="photo__container">
-	<h1><%= title._content %></h1>
+	<div class="canvas">
+		<img class="canvas__image" src="https://farm<%= farm %>.staticflickr.com/<%= server %>/<%= id %>_<%= secret %>_z.jpg" alt="Photo of <%= title._content %>">
+		<ul class="canvas__data photo-data">
+			<li class="photo-data__item">
+				<span class="photo-data__type photo-data__type--date">Date Taken:</span>
+				<span class="photo-data__point "> <%= dates.taken %></span>
+			</li>
+			<li class="photo-data__item">
+				<span class="photo-data__type photo-data__type--views">Views:</span>
+				<span class="photo-data__point "> <%= views %></span>
+			</li>
+		</ul>
+	</div>
+	<h1 class="photo__title"><%= title._content %></h1>
+	<p class="photo__description"><%= description._content %></p>
 </div>

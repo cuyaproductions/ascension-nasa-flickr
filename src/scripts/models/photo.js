@@ -11,9 +11,9 @@ class Photo extends Model {
 			id: 0
 		}
 	}
-
+	
 	url() {
-		return `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${CONFIG.api_key}&photo_id=${this.get('id')}&format=json&nojsoncallback=1`
+		return `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${CONFIG.api_key}&photo_id=${this.get('id')}&format=json&nojsoncallback=1`;
 	}
 
 	loadData() {
@@ -24,6 +24,7 @@ class Photo extends Model {
 	}
 
 	successHandler(me, response) {
+		me.unset('photo');
 		me.set(response.photo);
 	}
 }

@@ -6,6 +6,7 @@ class Gallery extends View {
 	constructor(options) {
 		super(options);
 		this.scrollActive = false;
+		this.isActive = true;
 		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model, 'reset', this.reset);
 	}
@@ -45,18 +46,21 @@ class Gallery extends View {
 
 
 	infiniteScroll() {
+		console.log(this.isActive);
 		const me = this;
 		function loadMore() {
 			const height = window.innerHeight,
 						bottom = document.body.getClientRects()[0].bottom;
 			if (height + 50 >= bottom && !me.model.noMore) {
 				me.model.loadMore();
+				console.log('remove listener');
 				window.removeEventListener('scroll', loadMore);
 				me.scrollActive = false;
 			}
 		}
 
-		if (!this.scrollActive){
+		if (!this.scrollActive && this.isActive){
+				console.log('add listener');
 			window.addEventListener('scroll', loadMore);
 				this.scrollActive = true;
 		}
