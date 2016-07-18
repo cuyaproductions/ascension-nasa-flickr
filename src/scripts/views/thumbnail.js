@@ -10,21 +10,15 @@ class Thumbnail extends View {
 		this.model = model;
 		this.template = 'thumbnail';
 
-		if (templates.get(this.template)) {
-			this.render();	
-		}
 		this.listenTo(templates, `change:${this.template}`, this.render);
 	}
+
 	tagName() {
 		return 'li';
 	}
 
 	className() {
 		return 'gallery__item';
-	}
-
-	test(data) {
-		console.log(data);
 	}
 
 	render() {

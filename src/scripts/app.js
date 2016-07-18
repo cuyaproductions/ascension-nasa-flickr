@@ -1,8 +1,9 @@
 import $ from 'jquery';
-import AppView from './views/appView.js';
+import {history} from 'backbone';
+import AppRouter from './routers/appRouter';
 
 
 $(() => {
-	const ascension = new AppView();
-	ascension.render();
+	const appRouter =  new AppRouter();
+	history.start();
 })

@@ -35,16 +35,10 @@ class Photos extends Collection {
 	}
 
 	successHandler(me, resp) {
-		me.pop();
-
+		me.remove(me.at(me.length - 1));
 		me.totalPages = resp.photos.pages;
-
-		if (me.currentPage++ >= me.totalPages) {
-			me.noMore = true;
-		}	
-		_(resp.photos.photo).each((photo) => {
-			me.add(photo);
-		});
+		me.noMore = me.currentPage++ >= me.totalPages;
+		me.add(resp.photos.photo);
 	}
 	
 	clean() {
