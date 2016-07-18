@@ -22,9 +22,9 @@ class Photo extends View {
 
 	render() {
 		const template = _.template(templates.get(this.template));
+		$('.loader').hide();
 		this.$el.html('');
 		this.$el.append(template(this.model.toJSON()));
-		$('.loader').hide();
 		return this;
 	}
 }

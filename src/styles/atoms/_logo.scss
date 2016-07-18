@@ -4,6 +4,7 @@
 	margin: 0 1rem 0 0;
 
 	background: url('../imgs/logo.svg') no-repeat center left;
+	color: #FFF;
 
 	&__name {
 		position: absolute;
@@ -14,7 +15,7 @@
 
 	@include media-query(tablet) {
 		&__name {
-			padding-left: 2.4rem;
+			padding-left: 2.6rem;
 			position: static;
 			height: auto;
 			width: auto;

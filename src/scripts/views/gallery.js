@@ -19,19 +19,26 @@ class Gallery extends View {
 	}
 
 	render() {
+		this.isActive = true;
+		this.infiniteScroll(); 
+		this.updateLoader();
+		
 		this.$el.html('');
 		this.model.each(this.addPhoto, this);
+		return this;
+	}
 
-		this.infiniteScroll(); 
+	updateLoader() {
+		if (this.isActive) {
+			$('.loader').show().addClass('loader--collapsed');	
+		}
 
-		$('.loader').show().addClass('loader--collapsed');	
 		if(this.model.noMore) {
 			$('.loader').addClass('loader--nomore');
 		} else {
 			$('.loader').removeClass('loader--nomore');
 		}
-
-		return this;
+		
 	}
 
 	addPhoto(model) {
@@ -46,21 +53,18 @@ class Gallery extends View {
 
 
 	infiniteScroll() {
-		console.log(this.isActive);
 		const me = this;
 		function loadMore() {
 			const height = window.innerHeight,
 						bottom = document.body.getClientRects()[0].bottom;
-			if (height + 50 >= bottom && !me.model.noMore) {
+			if (height + 50 >= bottom && !me.model.noMore && me.isActive) {
 				me.model.loadMore();
-				console.log('remove listener');
 				window.removeEventListener('scroll', loadMore);
 				me.scrollActive = false;
 			}
 		}
 
 		if (!this.scrollActive && this.isActive){
-				console.log('add listener');
 			window.addEventListener('scroll', loadMore);
 				this.scrollActive = true;
 		}
