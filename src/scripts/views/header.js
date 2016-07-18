@@ -4,26 +4,24 @@ import {View} from 'backbone';
 import templates from '../models/templates';
 
 class Header extends View {
-	constructor() {
-		super();
+	constructor(options) {
+		super(options);
 		this.setElement('#header');
 		this.template = 'header';
 
-		if (templates.get(this.template)) {
-			this.render();	
-		}
 		this.listenTo(templates, `change:${this.template}`, this.render);
 	}
 
 	events() {
 		return {
-			'submit #form': 'search'
+			'submit #form': 'search',
+			'change #sort': 'sort'
 		}
 	}
 
 	render() {
 		const template = _.template(templates.get(this.template));
-		this.$('.header__search').html(template());
+		this.$('.header__controls').html(template());
 		return this;
 	}
 
@@ -35,6 +33,11 @@ class Header extends View {
 
 	updateSearchQuery(query) {
 		this.$('.search__input').val(query);
+	}
+
+	sort(event) {
+		this.model.comparator = event.target.value;
+		this.model.sort();
 	}
 }
 

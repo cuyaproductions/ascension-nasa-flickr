@@ -11,7 +11,9 @@ class AppRouter extends Router {
 	constructor() {
 		super();
 		this.App = {
-			Collections: {},
+		Collections: {
+			Photos: new Photos()
+		},
 			Views: {}
 		}
 
@@ -51,8 +53,7 @@ class AppRouter extends Router {
 	}
 
 	renderHeader() {
-		this.App.Views.Header = this.App.Views.Header ? this.App.Views.Header : new HeaderView();
-		return this.App.Views.Header.render();
+		this.App.Views.Header = this.App.Views.Header ? this.App.Views.Header : new HeaderView({model: this.App.Collections.Photos});
 	}
 }
 

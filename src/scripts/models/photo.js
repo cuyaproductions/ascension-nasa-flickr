@@ -8,7 +8,11 @@ class Photo extends Model {
 
 	defaults() {
 		return {
-			id: 0
+			id: null,
+			farm: '',
+			server: '',
+			secret: '',
+			title: ''
 		}
 	}
 	

@@ -12,11 +12,11 @@ class Photos extends Collection {
 	}
 	
 	baseUrl() {
-		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&extras=description,date_taken,views&format=json&nojsoncallback=1`;
+		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&extras=date_upload,date_taken,views&format=json&nojsoncallback=1`;
 	}
 
 	searchUrl(query) {
-		return `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&text=${query}&format=json&nojsoncallback=1`;
+		return `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&text=${query}&extras=date_upload,date_taken,views&format=json&nojsoncallback=1`;
 	}
 
 	url() {
@@ -35,10 +35,13 @@ class Photos extends Collection {
 	}
 
 	successHandler(me, resp) {
-		me.remove(me.at(me.length - 1));
+		me.comparator = 'date_upload';
+		me.sort();
+		me.remove(me.at(0));
 		me.totalPages = resp.photos.pages;
 		me.noMore = me.currentPage++ >= me.totalPages;
 		me.add(resp.photos.photo);
+		me.trigger('photos:loaded', me);
 	}
 	
 	clean() {

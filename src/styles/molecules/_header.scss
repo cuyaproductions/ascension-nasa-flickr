@@ -26,8 +26,10 @@
 		}
 	}
 
-	&__search {
+	&__controls {
 		flex: 1 1 auto;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	@include media-query(tablet) {
@@ -36,7 +38,7 @@
 			width: auto;
 			height: auto;
 		}
-		&__search {
+		&__cotrols {
 			flex: 0 0 auto;
 		}
 	}

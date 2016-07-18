@@ -7,7 +7,8 @@ class Gallery extends View {
 		super(options);
 		this.scrollActive = false;
 		this.isActive = true;
-		this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.model, 'photos:loaded', this.render);
+		this.listenTo(this.model, 'sort', this.render);
 		this.listenTo(this.model, 'reset', this.reset);
 	}
 
@@ -42,8 +43,10 @@ class Gallery extends View {
 	}
 
 	addPhoto(model) {
-		const thumbnail = new Thumbnail(model).render();
-		this.$el.append(thumbnail.el);		
+		if (model.id) {
+			const thumbnail = new Thumbnail(model).render();
+			this.$el.append(thumbnail.el);		
+		}
 	}
 
 	reset() {

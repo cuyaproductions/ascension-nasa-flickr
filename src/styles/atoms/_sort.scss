@@ -1,0 +1,9 @@
+.sort {
+	&__input {
+		@include button;
+		background-image: url('../imgs/down-arrow.svg');
+		background-repeat: no-repeat;
+		background-position: right 0.4rem center;
+		padding-right: 1.3rem;
+	}	
+}
