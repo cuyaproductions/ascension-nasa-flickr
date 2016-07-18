@@ -4,6 +4,7 @@ import Gallery from '../views/gallery';
 import Photos from '../collections/photos';
 import Photo from '../models/photo';
 import PhotoView from '../views/photo';
+import HeaderView from '../views/header';
 
 
 class AppRouter extends Router {
@@ -13,6 +14,8 @@ class AppRouter extends Router {
 			Collections: {},
 			Views: {}
 		}
+
+		this.renderHeader();
 	}
 	routes() {
 		return {
@@ -40,6 +43,11 @@ class AppRouter extends Router {
 		this.App.Collections.Photos.search(query);
 		this.App.Views.Gallery = this.App.Views.Gallery ? this.App.Views.Gallery : new Gallery({model: this.App.Collections.Photos});
 		$('#app').html('').append(this.App.Views.Gallery.el);
+	}
+
+	renderHeader() {
+		this.App.Views.Header = this.App.Views.Header ? this.App.Views.Header : new HeaderView();
+		return this.App.Views.Header.render();
 	}
 }
 

@@ -4,10 +4,9 @@ import {View} from 'backbone';
 import templates from '../models/templates';
 
 class Header extends View {
-	constructor(model) {
+	constructor() {
 		super();
 		this.setElement('#header');
-		this.model = model;
 		this.template = 'header';
 
 		if (templates.get(this.template)) {
@@ -30,8 +29,8 @@ class Header extends View {
 
 	search(event) {
 		event.preventDefault();
-		const query = $(event.target).find('#search_input').blur().val();
-		this.model.search(query);
+		const query = $(event.target).find('.search__input').blur().val();
+		window.location.hash = `#/search/${encodeURI(query)}`;
 	}
 }
 

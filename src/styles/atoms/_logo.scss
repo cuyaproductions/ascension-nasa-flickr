@@ -1,0 +1,24 @@
+.logo {
+	height: 100%;
+	width: 100%;
+	margin: 0 1rem 0 0;
+
+	background: url('../imgs/logo.svg') no-repeat center left;
+
+	&__name {
+		position: absolute;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
+
+	@include media-query(tablet) {
+		&__name {
+			padding-left: 2.4rem;
+			position: static;
+			height: auto;
+			width: auto;
+			overflow: auto;
+		}
+	}
+}

@@ -18,19 +18,12 @@
 
 	&__logo {
 		flex: 0 0 2rem;
-		margin: 0;
-		padding-left: 2.5rem;
-		width: 2rem;
 		height: 2rem;
+		margin-right: 0.4rem;
 
-		background: url('../imgs/logo.svg') no-repeat center left;
-	}
-
-	&__name {
-		position: absolute;
-		height: 1px;
-		width: 1px;
-		overflow: hidden;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	&__search {
@@ -42,12 +35,6 @@
 			flex: 1 0 auto;
 			width: auto;
 			height: auto;
-		}
-		&__name {
-			position: static;
-			height: auto;
-			width: auto;
-			overflow: auto;
 		}
 		&__search {
 			flex: 0 0 auto;
