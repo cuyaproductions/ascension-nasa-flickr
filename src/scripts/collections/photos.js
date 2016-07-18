@@ -12,7 +12,7 @@ class Photos extends Collection {
 	}
 	
 	baseUrl() {
-		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&format=json&nojsoncallback=1`;
+		return `https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${CONFIG.api_key}&user_id=${CONFIG.user_id}&per_page=${CONFIG.per_page}&page=${this.currentPage}&extras=description,date_taken,views&format=json&nojsoncallback=1`;
 	}
 
 	searchUrl(query) {

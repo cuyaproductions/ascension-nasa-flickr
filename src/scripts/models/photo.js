@@ -8,15 +8,7 @@ class Photo extends Model {
 
 	defaults() {
 		return {
-			id: '',
-			secret: '',
-			server: '',
-			farm: 0,
-			title: '',
-			owner: '',
-			ispublic: 1,
-			isfriend: 0,
-			isfamily: 0
+			id: 0
 		}
 	}
 
@@ -24,7 +16,7 @@ class Photo extends Model {
 		return `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${CONFIG.api_key}&photo_id=${this.get('id')}&format=json&nojsoncallback=1`
 	}
 
-	getData() {
+	loadData() {
 		this.fetch({
 			reset: true,
 			success: this.successHandler

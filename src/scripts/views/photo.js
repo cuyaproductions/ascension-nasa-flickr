@@ -5,10 +5,8 @@ import {View} from 'backbone';
 class Photo extends View {
 	constructor(options) {
 		super(options);
-
 		this.template = _.template('<h1><%= title._content %></h1>');
-		this.model.getData();
-
+		this.model.loadData();	
 		this.listenTo(this.model, 'sync', this.render);
 	}
 

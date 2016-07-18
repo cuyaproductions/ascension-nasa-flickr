@@ -34,9 +34,9 @@ class AppRouter extends Router {
 	}
 	
 	photo(id) {
-		const model = this.App.Collections.Photos && this.App.Collections.Photos.length ? this.App.Collections.Photos.get(id) : new Photo({id: id});
-		const photoView = new PhotoView({model: model});
-		$('#app').html('').append(photoView.el);
+		const model = new Photo({id: id});
+		const view =  new PhotoView({model: model});
+		$('#app').html('').append(view.el);
 	}
 	
 	search(query) {
