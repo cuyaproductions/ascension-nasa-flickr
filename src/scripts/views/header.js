@@ -32,6 +32,10 @@ class Header extends View {
 		const query = $(event.target).find('.search__input').blur().val();
 		window.location.hash = `#/search/${encodeURI(query)}`;
 	}
+
+	updateSearchQuery(query) {
+		this.$('.search__input').val(query);
+	}
 }
 
 export default Header;

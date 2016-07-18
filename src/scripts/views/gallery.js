@@ -5,7 +5,7 @@ import Thumbnail from './thumbnail';
 class Gallery extends View {
 	constructor(options) {
 		super(options);
-		this.scrollActive = true;
+		this.scrollActive = false;
 		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model, 'reset', this.reset);
 	}
@@ -21,19 +21,14 @@ class Gallery extends View {
 		this.$el.html('');
 		this.model.each(this.addPhoto, this);
 
-		if(!this.model.isReset) {// Check if model has been to prevent duplicate event listeners
-			this.infiniteScroll(); // If model has not been reset add event listener again
-		} else {
-			this.model.isReset = false;
-		} 
-		
+		this.infiniteScroll(); 
+
+		$('.loader').show().addClass('loader--collapsed');	
 		if(this.model.noMore) {
 			$('.loader').addClass('loader--nomore');
 		} else {
 			$('.loader').removeClass('loader--nomore');
 		}
-
-		$('#app').append(this.el);
 
 		return this;
 	}
@@ -57,11 +52,13 @@ class Gallery extends View {
 			if (height + 50 >= bottom && !me.model.noMore) {
 				me.model.loadMore();
 				window.removeEventListener('scroll', loadMore);
+				me.scrollActive = false;
 			}
 		}
 
-		if (!this.noMore){
+		if (!this.scrollActive){
 			window.addEventListener('scroll', loadMore);
+				this.scrollActive = true;
 		}
 	}
 }

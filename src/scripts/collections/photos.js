@@ -9,7 +9,6 @@ class Photos extends Collection {
 		_.extend(this, Events); 
 		this.model = Photo;
 		this.currentPage = 1;
-		this.loadMore();
 	}
 	
 	baseUrl() {
@@ -32,6 +31,7 @@ class Photos extends Collection {
 				throw new Error('Error getting photos!');
 			} 
 		});
+		return this;
 	}
 
 	successHandler(me, resp) {
@@ -52,8 +52,7 @@ class Photos extends Collection {
 	search(query) {
 		this.clean();
 		this.url = () => {return this.searchUrl(query)};
-		this.isReset = true;
-		this.loadMore();
+		return this;
 	}
 }
 

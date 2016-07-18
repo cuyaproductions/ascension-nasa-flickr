@@ -29,6 +29,7 @@ class AppRouter extends Router {
 		this.App.Collections.Photos = this.App.Collections.Photos ? this.App.Collections.Photos: new Photos();
 		this.App.Collections.Photos.clean().loadMore();
 		this.App.Views.Gallery = this.App.Views.Gallery ? this.App.Views.Gallery : new Gallery({model: this.App.Collections.Photos});
+		this.App.Views.Header.updateSearchQuery('');
 		$('#app').html('').append(this.App.Views.Gallery.el);
 	}
 	
@@ -40,8 +41,9 @@ class AppRouter extends Router {
 	
 	search(query) {
 		this.App.Collections.Photos = this.App.Collections.Photos ? this.App.Collections.Photos : new Photos();
-		this.App.Collections.Photos.search(query);
+		this.App.Collections.Photos.search(query).loadMore();
 		this.App.Views.Gallery = this.App.Views.Gallery ? this.App.Views.Gallery : new Gallery({model: this.App.Collections.Photos});
+		this.App.Views.Header.updateSearchQuery(query);
 		$('#app').html('').append(this.App.Views.Gallery.el);
 	}
 
