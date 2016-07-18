@@ -15,19 +15,19 @@ To build or serve this application, you need the latest version of stable Node.j
 1. Install packages
 
 ````
-    $ npm install
+$ npm install
 ````
 
 2. To serve
 
 ````
-		$ npm start
+$ npm start
 ````
 
 3. Or to build
 
 ````
-	$ npm run build
+$ npm run build
 ````
 
 This process will generate an `app/` directory that is used by the application.
