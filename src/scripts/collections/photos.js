@@ -45,6 +45,8 @@ class Photos extends Collection {
 		this.currentPage = 1;
 		this.noMore = false;
 		this.reset([]);
+		this.url = () => {return this.baseUrl()};
+		return this;
 	}
 
 	search(query) {
